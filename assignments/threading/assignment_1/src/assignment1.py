@@ -13,11 +13,7 @@ class DataGenerator(th.Thread):
 
     def run(self) -> None:
 
-        X, y = make_classification(**self.make_classification_options)
-        df = pd.DataFrame(X)
-        df['target'] = y
-        df.to_csv(self.file_path, index=False)
-
+        pass
 
 def main():
     make_classification_options = {
@@ -32,17 +28,9 @@ def main():
     N = 5
     threads = []  
     for i in range(N):
-        file_name = f'synthetic_data_{i}.csv'
-        file_path = os.path.join(dataset_location, file_name)
-        make_classification_options['random_state'] = i
+        pass
 
-        data_generator = DataGenerator(make_classification_options, file_path)
-
-        data_generator.start()
-        threads.append(data_generator)
-
-    for t in threads:
-        t.join()
+    raise NotImplementedError("You need to implement the main function to generate synthetic datasets using threads.")
         
 if __name__ == "__main__":
     main()
