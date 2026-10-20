@@ -21,12 +21,15 @@ CATEGORIES := $(shell find $(PACKAGE_DIR) -mindepth 1 -maxdepth 1 -type d \
 
 ZIP_DIR := $(ROOTDIR)/zips
 
-.PHONY: all clean test install_assignments zip_categories
+.PHONY: all clean test install_assignments zip_categories clean_test_cache clean_zips
 
 install_assignments:
 	$(ACTIVATE); ${PYTHON} -m ${PIP} install -e ${PACKAGE_DIR}
 
-zip_categories:
+clean_test_cache:
+	find $(PACKAGE_DIR) -name '.pytest_cache' -type d -prune -exec rm -rf {} +
+
+zip_categories: clean_test_cache
 	@for cat in $(CATEGORIES); do \
 		mkdir -p $(ZIP_DIR); \
 		echo "Zipping category: $$cat"; \
