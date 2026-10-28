@@ -167,7 +167,6 @@ cython_debug/
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
 *.pdf
-*.md
 *.pickle
 *.json
 *.yaml
@@ -181,3 +180,4 @@ docs_sphinx/_static/uml/
 docs_sphinx/uml.rst
 sphinx_docs
 prof*
+.junie/*
